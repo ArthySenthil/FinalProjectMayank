@@ -1,16 +1,19 @@
-class Ground{
-    constructor(x,y,width,height){
-        var options ={
-            isStatic: true
-        }
-        this.body = Bodies.rectangle(x,y,width,height,options);
-        this.image = loadImage("images/road.png");
-        World.add(world,this.body);
-
+class Ground {
+    constructor(x,y,width,height,imageName) {
+      var options = {
+          isStatic: true,
+           //angle: Math.PI * 0.06
+      }
+      this.image=loadImage(imageName);
+      this.body = Bodies.rectangle(x,y,width,height,options);
+      this.width = width;
+      this.height = height;
+      World.add(world, this.body);
     }
     display(){
-        var pos = this.body.position;
-        imageMode(CENTER);
-        image(this.image,pos.x,pos.y,450,250);
+      var pos =this.body.position;
+      imageMode(CENTER);
+      fill("brown");
+      image(this.image,pos.x, pos.y, this.width, this.height);
     }
-}
+  };
